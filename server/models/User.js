@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
 const bcrypt = require('bcrypt');
+const Post = require('./Post');
 
 const userSchema = new Schema({
   firstName: {
@@ -33,6 +34,12 @@ const userSchema = new Schema({
     trim: true,
     minLength: 8
   },
+  posts: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'Post'
+    }
+  ],
 });
 
 userSchema.pre('save', async function(next) {
