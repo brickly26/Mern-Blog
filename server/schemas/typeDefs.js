@@ -24,6 +24,18 @@ const typeDefs = gql`
     author: String
     createdAt: String
   }
+  
+  type Auth {
+    token: ID!
+    user: User
+  }
+
+  type Query {
+    users: [User]
+    user(username: String!): User
+    posts(username: String): [Post]
+    post(postId: ID!): Post
+  }
 `
 
 module.exports = typeDefs;
